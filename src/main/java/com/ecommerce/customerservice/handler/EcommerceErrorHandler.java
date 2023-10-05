@@ -33,7 +33,7 @@ public class EcommerceErrorHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> handleUnknownException(final Exception exception, final HttpServletRequest request) {
 
-		var response = new ApiErrorResponse("internal-server-error", "Internal server error",
+		var response = new ApiErrorResponse("internal-server-error", exception.getMessage(),
 				HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.name(),
 				request.getRequestURI(), request.getMethod(), LocalDateTime.now());
 
